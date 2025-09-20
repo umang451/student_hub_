@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Hub - Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-graduation-cap me-2"></i>Student Hub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="library.html">
+                            <i class="fas fa-book me-1"></i>Library
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">
+                            <i class="fas fa-project-diagram me-1"></i>Projects
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="chat.html">
+                            <i class="fas fa-comments me-1"></i>Chat
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">
+                            <i class="fas fa-user me-1"></i>Profile
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Header -->
+            <div class="page-header">
+                <h1 class="display-5 fw-bold">Digital Library</h1>
+                <p class="lead">Access books, notes, and video lectures across all subjects</p>
+            </div>
+
+            <!-- Subject Filter -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="subject-filter-container">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">Choose Your Subject</h5>
+                            <button class="btn btn-outline-primary btn-sm" id="clearFilters">
+                                <i class="fas fa-times me-1"></i>Clear All
+                            </button>
+                        </div>
+                        <div class="subject-tags">
+                            <button class="subject-tag active" data-subject="all">All Subjects</button>
+                            <button class="subject-tag" data-subject="mathematics">Mathematics</button>
+                            <button class="subject-tag" data-subject="physics">Physics</button>
+                            <button class="subject-tag" data-subject="chemistry">Chemistry</button>
+                            <button class="subject-tag" data-subject="biology">Biology</button>
+                            <button class="subject-tag" data-subject="computer-science">Computer Science</button>
+                            <button class="subject-tag" data-subject="literature">Literature</button>
+                            <button class="subject-tag" data-subject="history">History</button>
+                            <button class="subject-tag" data-subject="economics">Economics</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="row mb-4">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="search-container">
+                        <div class="input-group">
+                            <input type="text" class="form-control form-control-lg" id="searchInput" placeholder="Search books, notes, videos...">
+                            <button class="btn btn-primary" type="button" id="searchBtn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resource Type Tabs -->
+            <ul class="nav nav-tabs resource-tabs mb-4" id="resourceTabs">
+                <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#books">
+                        <i class="fas fa-book me-2"></i>Books
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#notes">
+                        <i class="fas fa-sticky-note me-2"></i>Notes
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#videos">
+                        <i class="fas fa-video me-2"></i>Videos
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Resource Content -->
+            <div class="tab-content" id="resourceTabContent">
+                <!-- Books Tab -->
+                <div class="tab-pane fade show active" id="books">
+                    <div class="row g-4" id="booksContainer">
+                        <!-- Book items will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Notes Tab -->
+                <div class="tab-pane fade" id="notes">
+                    <div class="row g-4" id="notesContainer">
+                        <!-- Note items will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Videos Tab -->
+                <div class="tab-pane fade" id="videos">
+                    <div class="row g-4" id="videosContainer">
+                        <!-- Video items will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Resource Modal -->
+    <div class="modal fade" id="resourceModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Resource details will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="downloadBtn">
+                        <i class="fas fa-download me-2"></i>Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/library.js"></script>
+</body>
+</html>
